@@ -1,4 +1,6 @@
 import { createContext, useContext, useState } from 'react';
+import React from 'react';
+import { redirect, useNavigate } from 'react-router';
 
 const AuthContext = createContext({
   user: {},
@@ -9,16 +11,19 @@ const AuthContext = createContext({
   isLoading: false,
 });
 
-import React from 'react';
-
 function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
   const isLoggedIn = !!user;
-
+  const navigate = useNavigate();
   function login(uObj) {
     setUser(uObj);
+    navigate('/shops');
+  }
+  function logout() {
+    setUser(null);
+    navigate('/');
   }
 
   const authCtx = {
@@ -26,6 +31,7 @@ function AuthProvider({ children }) {
     isLoading,
     isLoggedIn,
     login,
+    logout,
   };
 
   return <AuthContext.Provider value={authCtx}>{children}</AuthContext.Provider>;

@@ -3,6 +3,7 @@ import LoginForm from '../components/forms/LoginForm';
 import { auth } from '../firebase/firebase';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { useAuthCtx } from '../store/AuthProvider';
+import { redirect } from 'react-router';
 
 function Login() {
   const { login } = useAuthCtx();
@@ -14,6 +15,7 @@ function Login() {
         const user = userCredential.user;
         console.log('prisijungti pavyko');
         login(user);
+
         // ...
       })
       .catch((error) => {
