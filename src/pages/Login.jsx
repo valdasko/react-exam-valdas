@@ -5,11 +5,13 @@ import { signInWithEmailAndPassword } from 'firebase/auth';
 import { useAuthCtx } from '../store/AuthProvider';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
+import Loader from '../components/ui/Loader';
 
 function Login() {
-  const { login } = useAuthCtx();
+  const { login, isLoading, setIsLoading } = useAuthCtx();
 
   function loginFire({ email, password }) {
+    setIsLoading(true);
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
@@ -17,7 +19,7 @@ function Login() {
         console.log('user ===', user);
         login(user);
         toast.success('Login success');
-
+        setIsLoading(false);
         // ...
       })
       .catch((error) => {
@@ -25,11 +27,13 @@ function Login() {
         toast.error(errorCode);
         // const errorMessage = error.message;
         // console.warn('errorMessage ===', errorMessage);
+        setIsLoading(false);
       });
   }
   return (
     <div>
       <h1>login page</h1>
+      {isLoading && <h3>Loading..</h3>}
       <LoginForm onLogin={loginFire} />
       <Link to={'/register'}>New user? Sign up</Link>
     </div>

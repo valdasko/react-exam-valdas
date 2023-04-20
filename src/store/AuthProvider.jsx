@@ -37,6 +37,7 @@ function AuthProvider({ children }) {
     login,
     logout,
     register,
+    setIsLoading,
   };
 
   return <AuthContext.Provider value={authCtx}>{children}</AuthContext.Provider>;

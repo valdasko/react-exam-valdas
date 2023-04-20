@@ -2,18 +2,23 @@ import React, { useEffect, useState } from 'react';
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../firebase/firebase';
 import Loader from '../components/ui/Loader';
+import { useAuthCtx } from '../store/AuthProvider';
 
 function Shops() {
   const [shopsArr, setShopsArr] = useState([]);
+  const { isLoading, setIsLoading } = useAuthCtx();
 
   useEffect(() => {
     async function getShops() {
+      setIsLoading(true);
       const querySnapshot = await getDocs(collection(db, 'shops'));
       const tempPosts = [];
       querySnapshot.forEach((doc) => {
         tempPosts.push({ uid: doc.id, ...doc.data() });
       });
+
       setShopsArr(tempPosts);
+      setIsLoading(false);
     }
     getShops();
   }, []);
@@ -21,7 +26,9 @@ function Shops() {
   return (
     <div>
       <h1>Shops page</h1>
-      {shopsArr.length === 0 ? (
+
+      {isLoading && <Loader />}
+      {!isLoading && shopsArr.length === 0 ? (
         <h3>Sadly there are no shops..</h3>
       ) : (
         // <Loader />
