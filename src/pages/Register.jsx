@@ -3,8 +3,11 @@ import RegisterForm from '../components/forms/RegisterForm';
 import { Link } from 'react-router-dom';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../firebase/firebase';
+import { useAuthCtx } from '../store/AuthProvider';
 
 function Register() {
+  const { register } = useAuthCtx();
+
   function registerUser({ email, password }) {
     console.log('{email, password} ===', { email, password });
     createUserWithEmailAndPassword(auth, email, password)
@@ -12,6 +15,7 @@ function Register() {
         // Signed in
         const user = userCredential.user;
         console.log('user ===', user);
+        register(user);
         // ...
       })
       .catch((error) => {
