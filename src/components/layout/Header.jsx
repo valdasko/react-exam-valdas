@@ -1,8 +1,9 @@
 import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
+import { useAuthCtx } from '../../store/AuthProvider';
 
 function Header() {
-  const isUserLoggedIn = false;
+  const { isLoggedIn } = useAuthCtx();
 
   return (
     <div>
@@ -10,13 +11,13 @@ function Header() {
         <Link to={'/'}>Logo</Link>
         <nav>
           <NavLink to={'/'}>Home</NavLink>
-          {!isUserLoggedIn && (
+          {!isLoggedIn && (
             <>
               <NavLink to={'/login'}>Login</NavLink>
               <NavLink to={'/register'}>Sign up</NavLink>
             </>
           )}
-          {isUserLoggedIn && (
+          {isLoggedIn && (
             <>
               <NavLink to={'/shops'}>Shops</NavLink>
               <NavLink to={'/addshop'}>Add shop</NavLink>
