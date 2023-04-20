@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../firebase/firebase';
+import Loader from '../components/ui/Loader';
 
 function Shops() {
   const [shopsArr, setShopsArr] = useState([]);
@@ -12,7 +13,6 @@ function Shops() {
       querySnapshot.forEach((doc) => {
         tempPosts.push({ uid: doc.id, ...doc.data() });
       });
-      console.log('tempPosts ===', tempPosts);
       setShopsArr(tempPosts);
     }
     getShops();
@@ -24,6 +24,7 @@ function Shops() {
       {shopsArr.length === 0 ? (
         <h3>Sadly there are no shops..</h3>
       ) : (
+        // <Loader />
         <div>
           {shopsArr.map((shopObj) => (
             <div key={shopObj.uid}>

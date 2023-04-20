@@ -19,7 +19,7 @@ function AuthProvider({ children }) {
   const navigate = useNavigate();
   function login(uObj) {
     setUser(uObj);
-    navigate('/shops');
+    navigate('/');
   }
   function logout() {
     setUser(null);
@@ -27,7 +27,7 @@ function AuthProvider({ children }) {
   }
   function register(uObj) {
     setUser(uObj);
-    navigate('/shops');
+    navigate('/');
   }
 
   const authCtx = {

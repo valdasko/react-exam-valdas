@@ -14,6 +14,7 @@ function Login() {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
+        console.log('user ===', user);
         login(user);
         toast.success('Login success');
 
