@@ -6,6 +6,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Shops from './pages/Shops';
 import AddShop from './pages/AddShop';
+import { app } from './firebase/firebase';
 function App() {
   return (
     <div className='App'>
