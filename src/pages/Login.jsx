@@ -3,7 +3,7 @@ import LoginForm from '../components/forms/LoginForm';
 import { auth } from '../firebase/firebase';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { useAuthCtx } from '../store/AuthProvider';
-import { redirect } from 'react-router';
+import { Link } from 'react-router-dom';
 
 function Login() {
   const { login } = useAuthCtx();
@@ -28,6 +28,7 @@ function Login() {
     <div>
       <h1>login page</h1>
       <LoginForm onLogin={loginFire} />
+      <Link to={'/register'}>New user? Sign up</Link>
     </div>
   );
 }
