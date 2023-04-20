@@ -2,14 +2,16 @@ import React from 'react';
 import AddShopForm from '../components/forms/AddShopForm';
 import { collection, addDoc } from 'firebase/firestore';
 import { db } from '../firebase/firebase';
+import { toast } from 'react-hot-toast';
 
 function AddShop() {
   async function createShop(newShopObj) {
     try {
       const docRef = await addDoc(collection(db, 'shops'), newShopObj);
-      console.log('Document written with ID: ', docRef.id);
+      toast.success('Shop added successfully');
     } catch (e) {
       console.error('Error adding document: ', e);
+      toast.error('Error, try again later');
     }
   }
 

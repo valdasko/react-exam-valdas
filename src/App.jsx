@@ -7,13 +7,14 @@ import Register from './pages/Register';
 import Shops from './pages/Shops';
 import AddShop from './pages/AddShop';
 import { useAuthCtx } from './store/AuthProvider';
+import { Toaster } from 'react-hot-toast';
 
 function App() {
   const { isLoggedIn } = useAuthCtx();
   return (
     <div className='App'>
       <Header />
-
+      <Toaster />
       <Routes>
         <Route path='/' element={<Home />} />
         <Route

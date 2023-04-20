@@ -12,16 +12,19 @@ function RegisterForm({ onRegister }) {
     validationSchema: Yup.object().shape({
       email: Yup.string().email().required('Required field'),
       password: Yup.string().min(6).required('Required field'),
+      repeatPassword: Yup.string()
+        .min(6)
+        .required('Required field')
+        .oneOf([Yup.ref('password')], 'Passwords must match'),
     }),
     onSubmit: (values) => {
       console.log('Form values:', values);
-      const { password, repeatPassword } = formik.values;
-      if (password === repeatPassword) {
-        onRegister({
-          email: values.email,
-          password,
-        });
-      }
+      const { password } = formik.values;
+
+      onRegister({
+        email: values.email,
+        password,
+      });
     },
   });
 

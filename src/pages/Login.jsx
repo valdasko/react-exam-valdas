@@ -4,6 +4,7 @@ import { auth } from '../firebase/firebase';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { useAuthCtx } from '../store/AuthProvider';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-hot-toast';
 
 function Login() {
   const { login } = useAuthCtx();
@@ -13,15 +14,16 @@ function Login() {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        console.log('prisijungti pavyko');
         login(user);
+        toast.success('Login success');
 
         // ...
       })
       .catch((error) => {
         const errorCode = error.code;
-        const errorMessage = error.message;
-        console.warn('errorMessage ===', errorMessage);
+        toast.error(errorCode);
+        // const errorMessage = error.message;
+        // console.warn('errorMessage ===', errorMessage);
       });
   }
   return (

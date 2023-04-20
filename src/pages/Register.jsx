@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../firebase/firebase';
 import { useAuthCtx } from '../store/AuthProvider';
+import { toast } from 'react-hot-toast';
 
 function Register() {
   const { register } = useAuthCtx();
@@ -14,12 +15,14 @@ function Register() {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        console.log('user ===', user);
+        // console.log('user ===', user);
         register(user);
+        toast.success('Registration completed');
         // ...
       })
       .catch((error) => {
         const errorCode = error.code;
+        toast.error(errorCode);
         const errorMessage = error.message;
         console.warn(errorMessage);
         // ..
