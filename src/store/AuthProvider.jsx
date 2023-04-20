@@ -25,6 +25,10 @@ function AuthProvider({ children }) {
     setUser(null);
     navigate('/');
   }
+  function register(uObj) {
+    setUser(uObj);
+    navigate('/shops');
+  }
 
   const authCtx = {
     user,
@@ -32,6 +36,7 @@ function AuthProvider({ children }) {
     isLoggedIn,
     login,
     logout,
+    register,
   };
 
   return <AuthContext.Provider value={authCtx}>{children}</AuthContext.Provider>;
