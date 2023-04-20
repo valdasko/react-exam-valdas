@@ -1,8 +1,11 @@
 import React from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import { useAuthCtx } from '../../store/AuthProvider';
 
-function AddShopForm() {
+function AddShopForm({ onNewShop }) {
+  const { user } = useAuthCtx();
+
   const formik = useFormik({
     initialValues: {
       name: '',
@@ -10,6 +13,7 @@ function AddShopForm() {
       town: '',
       startyear: '',
       image: '',
+      userId: user?.uid,
     },
     validationSchema: Yup.object().shape({
       name: Yup.string().min(4).required('Shop name is required'),
@@ -18,6 +22,10 @@ function AddShopForm() {
       description: Yup.string().min(6).required('Please enter description'),
       image: Yup.string().min(5).required('Image is required'),
     }),
+    onSubmit: (values) => {
+      console.log(values);
+      onNewShop(values);
+    },
   });
 
   return (
