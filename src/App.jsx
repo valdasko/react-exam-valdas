@@ -8,6 +8,7 @@ import Shops from './pages/Shops';
 import AddShop from './pages/AddShop';
 import { useAuthCtx } from './store/AuthProvider';
 import { Toaster } from 'react-hot-toast';
+import NotFound from './pages/NotFound';
 
 function App() {
   const { isLoggedIn } = useAuthCtx();
@@ -46,6 +47,7 @@ function App() {
             </>
           }
         />
+        <Route path={'*'} element={<NotFound />} />
       </Routes>
     </div>
   );
