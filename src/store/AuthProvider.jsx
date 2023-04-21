@@ -8,15 +8,13 @@ const storageUserData = localStorage.getItem(localUserKey);
 
 const AuthContext = createContext({
   user: {},
-  // uid: storageUserData ? user.uid : null,
   login() {},
   logout() {},
   register() {},
   isLoggedIn: false,
   isLoading: false,
   logoutNotification() {},
-  // loginNotification() {},
-  // regNotification() {},
+  regNotification() {},
 });
 
 function AuthProvider({ children }) {
@@ -31,13 +29,12 @@ function AuthProvider({ children }) {
 
   const isLoggedIn = !!user;
 
-  // const logoutNotification = () => toast.success('Logged out', { duration: 1000 });
-  // const loginNotification = () => toast.success('Nice to see you!', { duration: 2000 });
-  // const regNotification = () => toast.success('Welcome to our page', { duration: 3000 });
+  const regNotification = () => toast.success('Welcome to our page', { duration: 3000 });
+  const logoutNotification = () => toast.success('See you next time!', { duration: 2000 });
+
   function login(uObj) {
     localStorage.setItem(localUserKey, uObj.uid);
     setUser(uObj);
-    // loginNotification();
     navigate('/shops');
   }
   function logout() {

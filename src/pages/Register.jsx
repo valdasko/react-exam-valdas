@@ -10,12 +10,10 @@ function Register() {
   const { register } = useAuthCtx();
 
   function registerUser({ email, password }) {
-    // console.log('{email, password} ===', { email, password });
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        // console.log('user ===', user);
         register(user);
         // ...
       })
@@ -24,7 +22,6 @@ function Register() {
         if (errorCode === 'auth/email-already-in-use') {
           toast.error('A user with this email already exists');
         }
-        console.log('errorCode ===', errorCode);
         const errorMessage = error.message;
         // ..
       });
@@ -32,7 +29,7 @@ function Register() {
 
   return (
     <div>
-      <h1>REgister page</h1>
+      <h1>Register page</h1>
       <RegisterForm onRegister={registerUser} />
       <Link to={'/login'}>Already have an account? Log in</Link>
     </div>
