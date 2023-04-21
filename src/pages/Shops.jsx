@@ -4,6 +4,7 @@ import { db } from '../firebase/firebase';
 import Loader from '../components/ui/Loader';
 import { useAuthCtx } from '../store/AuthProvider';
 import Container from '../components/ui/Container';
+import Card from '../components/ui/Card';
 
 function Shops() {
   const [shopsArr, setShopsArr] = useState([]);
@@ -25,23 +26,15 @@ function Shops() {
 
   return (
     <Container>
-      <h1>Shops page</h1>
+      <h1 className='font-headers text-[45px] my-6 text-center'>Welcome to shops page!</h1>
       {isLoading && <Loader />}
       {!isLoading && shopsArr.length === 0 ? (
         <h3>Sadly there are no shops..</h3>
       ) : (
         // <Loader />
-        <div>
+        <div className='grid grid-flow-row gap-8 text-neutral-600 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
           {shopsArr.map((shopObj) => (
-            <div key={shopObj.uid}>
-              <div>
-                <img src={shopObj.image} alt='shop' />
-              </div>
-              <h3>{shopObj.name}</h3>
-              <p>{shopObj.description}</p>
-              <p>{shopObj.town}</p>
-              <p>{shopObj.startyear}</p>
-            </div>
+            <Card item={shopObj} key={shopObj.uid} />
           ))}
         </div>
       )}
