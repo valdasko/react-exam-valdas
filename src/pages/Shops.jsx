@@ -16,7 +16,6 @@ function Shops() {
       querySnapshot.forEach((doc) => {
         tempPosts.push({ uid: doc.id, ...doc.data() });
       });
-
       setShopsArr(tempPosts);
       setIsLoading(false);
     }
@@ -26,7 +25,6 @@ function Shops() {
   return (
     <div>
       <h1>Shops page</h1>
-
       {isLoading && <Loader />}
       {!isLoading && shopsArr.length === 0 ? (
         <h3>Sadly there are no shops..</h3>

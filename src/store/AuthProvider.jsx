@@ -1,9 +1,14 @@
 import { createContext, useContext, useState } from 'react';
 import React from 'react';
-import { redirect, useNavigate } from 'react-router';
+import { useNavigate } from 'react-router';
+
+const localUserKey = 'FIRE_USER';
+
+const storageUserData = localStorage.getItem(localUserKey);
 
 const AuthContext = createContext({
   user: {},
+  // uid: storageUserData ? user.uid : null,
   login() {},
   logout() {},
   register() {},
@@ -12,17 +17,28 @@ const AuthContext = createContext({
 });
 
 function AuthProvider({ children }) {
-  const [user, setUser] = useState(null);
+  const navigate = useNavigate();
+
+  // States
+  const [user, setUser] = useState(() => {
+    const storageUserData = localStorage.getItem(localUserKey);
+    return storageUserData ? { uid: storageUserData } : null;
+  });
   const [isLoading, setIsLoading] = useState(false);
 
   const isLoggedIn = !!user;
-  const navigate = useNavigate();
+
   function login(uObj) {
+    const localToken = uObj.uid;
+
+    localStorage.setItem(localUserKey, localToken);
     setUser(uObj);
+
     navigate('/');
   }
   function logout() {
     setUser(null);
+    localStorage.removeItem(localUserKey);
     navigate('/');
   }
   function register(uObj) {
@@ -32,6 +48,7 @@ function AuthProvider({ children }) {
 
   const authCtx = {
     user,
+
     isLoading,
     isLoggedIn,
     login,

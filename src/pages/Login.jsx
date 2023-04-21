@@ -5,7 +5,6 @@ import { signInWithEmailAndPassword } from 'firebase/auth';
 import { useAuthCtx } from '../store/AuthProvider';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
-import Loader from '../components/ui/Loader';
 
 function Login() {
   const { login, isLoading, setIsLoading } = useAuthCtx();
@@ -17,7 +16,8 @@ function Login() {
         // Signed in
         const user = userCredential.user;
         console.log('user ===', user);
-        login(user);
+        const token = user.uid;
+        login(user, token);
         toast.success('Login success');
         setIsLoading(false);
         // ...
