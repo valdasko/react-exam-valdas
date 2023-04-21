@@ -29,12 +29,10 @@ function AuthProvider({ children }) {
   const isLoggedIn = !!user;
 
   function login(uObj) {
-    const localToken = uObj.uid;
-
-    localStorage.setItem(localUserKey, localToken);
+    localStorage.setItem(localUserKey, uObj.uid);
     setUser(uObj);
 
-    navigate('/');
+    navigate('/shops');
   }
   function logout() {
     setUser(null);
@@ -43,7 +41,7 @@ function AuthProvider({ children }) {
   }
   function register(uObj) {
     setUser(uObj);
-    navigate('/');
+    navigate('/shops');
   }
 
   const authCtx = {
