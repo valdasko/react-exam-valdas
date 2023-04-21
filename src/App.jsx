@@ -12,7 +12,7 @@ import { Toaster } from 'react-hot-toast';
 function App() {
   const { isLoggedIn } = useAuthCtx();
   return (
-    <div className='App'>
+    <div className='App bg-light'>
       <Header />
       <Toaster />
       <Routes>

@@ -4,6 +4,7 @@ import { collection, addDoc } from 'firebase/firestore';
 import { db } from '../firebase/firebase';
 import { toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
+import Container from '../components/ui/Container';
 
 function AddShop() {
   const navigate = useNavigate();
@@ -20,10 +21,10 @@ function AddShop() {
   }
 
   return (
-    <div>
+    <Container>
       <h1>Add shop page</h1>
       <AddShopForm onNewShop={createShop} />
-    </div>
+    </Container>
   );
 }
 

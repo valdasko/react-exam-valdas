@@ -3,6 +3,7 @@ import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../firebase/firebase';
 import Loader from '../components/ui/Loader';
 import { useAuthCtx } from '../store/AuthProvider';
+import Container from '../components/ui/Container';
 
 function Shops() {
   const [shopsArr, setShopsArr] = useState([]);
@@ -23,7 +24,7 @@ function Shops() {
   }, []);
 
   return (
-    <div>
+    <Container>
       <h1>Shops page</h1>
       {isLoading && <Loader />}
       {!isLoading && shopsArr.length === 0 ? (
@@ -44,7 +45,7 @@ function Shops() {
           ))}
         </div>
       )}
-    </div>
+    </Container>
   );
 }
 
