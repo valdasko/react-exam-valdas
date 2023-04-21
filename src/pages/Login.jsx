@@ -18,7 +18,6 @@ function Login() {
         console.log('user ===', user);
         const token = user.uid;
         login(user, token);
-        toast.success('Login success');
         setIsLoading(false);
         // ...
       })

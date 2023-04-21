@@ -1,9 +1,9 @@
 import { createContext, useContext, useState } from 'react';
 import React from 'react';
 import { useNavigate } from 'react-router';
+import { toast } from 'react-hot-toast';
 
 const localUserKey = 'FIRE_USER';
-
 const storageUserData = localStorage.getItem(localUserKey);
 
 const AuthContext = createContext({
@@ -14,6 +14,9 @@ const AuthContext = createContext({
   register() {},
   isLoggedIn: false,
   isLoading: false,
+  logoutNotification() {},
+  loginNotification() {},
+  regNotification() {},
 });
 
 function AuthProvider({ children }) {
@@ -28,25 +31,30 @@ function AuthProvider({ children }) {
 
   const isLoggedIn = !!user;
 
+  const logoutNotification = () => toast.success('Logged out', { duration: 1000 });
+  const loginNotification = () => toast.success('Nice to see you!', { duration: 2000 });
+  const regNotification = () => toast.success('Welcome to our page', { duration: 3000 });
   function login(uObj) {
     localStorage.setItem(localUserKey, uObj.uid);
     setUser(uObj);
-
+    loginNotification();
     navigate('/shops');
   }
   function logout() {
     setUser(null);
     localStorage.removeItem(localUserKey);
+    logoutNotification();
     navigate('/');
   }
   function register(uObj) {
+    regNotification();
     setUser(uObj);
+    localStorage.setItem(localUserKey, uObj.uid);
     navigate('/shops');
   }
 
   const authCtx = {
     user,
-
     isLoading,
     isLoggedIn,
     login,

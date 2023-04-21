@@ -17,14 +17,15 @@ function Register() {
         const user = userCredential.user;
         // console.log('user ===', user);
         register(user);
-        toast.success('Registration completed');
         // ...
       })
       .catch((error) => {
         const errorCode = error.code;
-        toast.error(errorCode);
+        if (errorCode === 'auth/email-already-in-use') {
+          toast.error('A user with this email already exists');
+        }
+        console.log('errorCode ===', errorCode);
         const errorMessage = error.message;
-        console.warn(errorMessage);
         // ..
       });
   }
