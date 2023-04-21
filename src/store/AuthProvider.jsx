@@ -15,8 +15,8 @@ const AuthContext = createContext({
   isLoggedIn: false,
   isLoading: false,
   logoutNotification() {},
-  loginNotification() {},
-  regNotification() {},
+  // loginNotification() {},
+  // regNotification() {},
 });
 
 function AuthProvider({ children }) {
@@ -31,13 +31,13 @@ function AuthProvider({ children }) {
 
   const isLoggedIn = !!user;
 
-  const logoutNotification = () => toast.success('Logged out', { duration: 1000 });
-  const loginNotification = () => toast.success('Nice to see you!', { duration: 2000 });
-  const regNotification = () => toast.success('Welcome to our page', { duration: 3000 });
+  // const logoutNotification = () => toast.success('Logged out', { duration: 1000 });
+  // const loginNotification = () => toast.success('Nice to see you!', { duration: 2000 });
+  // const regNotification = () => toast.success('Welcome to our page', { duration: 3000 });
   function login(uObj) {
     localStorage.setItem(localUserKey, uObj.uid);
     setUser(uObj);
-    loginNotification();
+    // loginNotification();
     navigate('/shops');
   }
   function logout() {

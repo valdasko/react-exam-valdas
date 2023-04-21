@@ -10,7 +10,7 @@ function Register() {
   const { register } = useAuthCtx();
 
   function registerUser({ email, password }) {
-    console.log('{email, password} ===', { email, password });
+    // console.log('{email, password} ===', { email, password });
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
