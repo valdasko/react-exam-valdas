@@ -4,6 +4,17 @@ import { useAuthCtx } from '../../store/AuthProvider';
 import { useScrollPosition } from '../../hooks/useScrollPosition';
 import Container from '../ui/Container';
 
+const linksData = [
+  { index: 1, title: 'Home', link: '/' },
+  { index: 2, title: 'Login', link: '/login' },
+  { index: 3, title: 'Sign up', link: '/register' },
+];
+const privateLinksData = [
+  { index: 1, title: 'Home', link: '/' },
+  { index: 2, title: 'Shops', link: '/shops' },
+  { index: 3, title: 'Add shop', link: '/addshop' },
+];
+
 function Header() {
   const { isLoggedIn, logout } = useAuthCtx();
 
@@ -33,53 +44,31 @@ function Header() {
             Logo
           </Link>
           <nav className='my-2 flex gap-6 font-body text-xl'>
-            <NavLink
-              className={`hover:text-primary transition-colors duration-300 ${
-                isActive('/') ? 'text-primary' : ''
-              } px-2 py-1`}
-              to={'/'}
-            >
-              Home
-            </NavLink>
-
-            {!isLoggedIn && (
-              <>
+            {!isLoggedIn &&
+              linksData.map(({ index, title, link }) => (
                 <NavLink
+                  key={index}
+                  to={link}
                   className={`hover:text-primary transition-colors duration-300 ${
-                    isActive('/login') ? 'text-primary' : ''
+                    isActive(link) ? 'text-primary' : ''
                   } px-2 py-1`}
-                  to={'/login'}
                 >
-                  Login
+                  {title}
                 </NavLink>
-                <NavLink
-                  className={`hover:text-primary transition-colors duration-300 ${
-                    isActive('/register') ? 'text-primary' : ''
-                  } px-2 py-1`}
-                  to={'/register'}
-                >
-                  Sign up
-                </NavLink>
-              </>
-            )}
+              ))}
             {isLoggedIn && (
               <>
-                <NavLink
-                  className={`hover:text-primary transition-colors duration-300 ${
-                    isActive('/shops') ? 'text-primary' : ''
-                  } px-2 py-1`}
-                  to={'/shops'}
-                >
-                  Shops
-                </NavLink>
-                <NavLink
-                  className={`hover:text-primary transition-colors duration-300 ${
-                    isActive('/addshop') ? 'text-primary' : ''
-                  } px-2 py-1`}
-                  to={'/addshop'}
-                >
-                  Add shop
-                </NavLink>
+                {privateLinksData.map(({ index, title, link }) => (
+                  <NavLink
+                    key={index}
+                    to={link}
+                    className={`hover:text-primary transition-colors duration-300 ${
+                      isActive(link) ? 'text-primary' : ''
+                    } px-2 py-1`}
+                  >
+                    {title}
+                  </NavLink>
+                ))}
                 <button className='hover:text-primary transition-colors duration-300 px-2 py-1' onClick={logout}>
                   Logout
                 </button>
