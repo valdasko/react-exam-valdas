@@ -5,9 +5,10 @@ import { GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup } from 
 import { useAuthCtx } from '../store/AuthProvider';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
+import Container from '../components/ui/Container';
 
 function Login() {
-  const { login, isLoading, setIsLoading } = useAuthCtx();
+  const { login, setIsLoading } = useAuthCtx();
 
   function loginFire({ email, password }) {
     setIsLoading(true);
@@ -36,6 +37,7 @@ function Login() {
   }
 
   function loginWithGoogle() {
+    setIsLoading(true);
     const loginGooglePromise = signInWithPopup(auth, googleProvider)
       .then((result) => {
         // This gives you a Google Access Token. You can use it to access the Google API.
@@ -45,6 +47,7 @@ function Login() {
         const user = result.user;
         login(user);
         console.log('user ===', user);
+        setIsLoading(false);
         // IdP data available using getAdditionalUserInfo(result)
         // ...
       })
@@ -57,22 +60,30 @@ function Login() {
         const email = error.customData.email;
         // The AuthCredential type that was used.
         const credential = GoogleAuthProvider.credentialFromError(error);
+        setIsLoading(false);
         // ...
       });
     toast.promise(loginGooglePromise, {
       loading: 'Loading',
       success: 'Welcome',
-      error: 'Error when loging in',
+      error: 'Error',
     });
   }
 
   return (
-    <div>
-      <h1>login page</h1>
-      {isLoading && <h3>Loading..</h3>}
-      <LoginForm onLogin={loginFire} />
-      <button onClick={loginWithGoogle}>Log in with Google account</button>
-      <Link to={'/register'}>New user? Sign up</Link>
+    <div className='min-h-[93.4vh] flex items-center justify-center'>
+      <div className='bg-primary flex rounded-2xl shadow-lg max-w-3xl p-5'>
+        <div className='md:w-1/2 px-8'>
+          <h2 className='font-bold font-headers text-secondary text-2xl'>Login</h2>
+          <p className='font-body text-sm mt-4'>If You Are Already A Member, Easily Log In</p>
+          <LoginForm onLogin={loginFire} onGoogleLogin={loginWithGoogle} />
+        </div>
+
+        {/* image */}
+        <div className='w-1/2 md:block hidden '>
+          <img className='rounded-2xl ' src='/public/login1.jpg' alt='login image' />
+        </div>
+      </div>
     </div>
   );
 }

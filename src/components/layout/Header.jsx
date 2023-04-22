@@ -7,7 +7,6 @@ function Header() {
   const { isLoggedIn, logout } = useAuthCtx();
 
   const scrollPosition = useScrollPosition();
-  console.log('scrollPosition ===', scrollPosition);
   function classNames(...clases) {
     return clases.filter(Boolean).join(' ');
   }
