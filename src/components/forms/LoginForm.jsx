@@ -25,7 +25,6 @@ function LoginForm({ onLogin, onGoogleLogin }) {
     <div>
       <form className='flex flex-col  gap-4' onSubmit={formik.handleSubmit}>
         <div>
-          {/* <label htmlFor='email'>Email</label> */}
           <input
             className='p-2 mt-8 rounded-xl border w-full'
             id='email'
@@ -39,7 +38,6 @@ function LoginForm({ onLogin, onGoogleLogin }) {
           {formik.touched.email && formik.errors.email ? <div>{formik.errors.email}</div> : null}
         </div>
         <div>
-          {/* <label htmlFor='password'>Password</label> */}
           <input
             className='p-2 rounded-xl border w-full'
             id='password'

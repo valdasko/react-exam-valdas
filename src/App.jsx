@@ -15,7 +15,27 @@ function App() {
   return (
     <div className='App bg-light'>
       <Header />
-      <Toaster />
+      <Toaster
+        toastOptions={{
+          success: {
+            style: {
+              background: '#CDA274',
+              color: '#292F36',
+            },
+          },
+          loading: {
+            style: {
+              background: '#CDA274',
+            },
+          },
+          error: {
+            style: {
+              background: '#292F36',
+              color: '#F4F0EC',
+            },
+          },
+        }}
+      />
       <Routes>
         <Route path='/' element={<Home />} />
         <Route
