@@ -25,29 +25,30 @@ function Shops() {
   }, []);
 
   return (
-    <Container>
-      {isLoading && <Loader />}
+    <section>
+      <Container>
+        {isLoading && <Loader />}
 
-      {!isLoading && shopsArr.length === 0 ? (
-        <h3>Sadly there are no shops..</h3>
-      ) : (
-        // <Loader />
-        <div className='mx-auto'>
-          <div className='relative mb-6'>
-            <img className='w-full h-80 object-cover bottom-5' src='/public/hero.webp' alt='hero img' />
-            <h1 className='font-headers text-center text-[40px] font-normal  text-secondary bg-light absolute left-1/2 transform -translate-x-1/2  bottom-0 bg-opacity-80 rounded-t-xl  uppercase py-8 px-20'>
-              shops
-              <span className='block font-body text-xl text-center text-[#333]'>Welcome to our shops page</span>
-            </h1>
+        {!isLoading && shopsArr.length === 0 ? (
+          <h3>Sadly there are no shops..</h3>
+        ) : (
+          <div className='mx-auto'>
+            <div className='relative mb-6'>
+              <img className='w-full h-80 object-cover bottom-5' src='/public/hero.webp' alt='hero img' />
+              <h1 className='font-headers text-center text-[40px] font-normal  text-secondary bg-light absolute left-1/2 transform -translate-x-1/2  bottom-0 bg-opacity-80 rounded-t-xl  uppercase py-8 px-20'>
+                shops
+                <span className='block font-body text-xl text-center text-[#333]'>Welcome to our shops page</span>
+              </h1>
+            </div>
+            <div className='grid grid-flow-row gap-8 text-neutral-600 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
+              {shopsArr.map((shopObj) => (
+                <Card item={shopObj} key={shopObj.uid} />
+              ))}
+            </div>
           </div>
-          <div className='grid grid-flow-row gap-8 text-neutral-600 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
-            {shopsArr.map((shopObj) => (
-              <Card item={shopObj} key={shopObj.uid} />
-            ))}
-          </div>
-        </div>
-      )}
-    </Container>
+        )}
+      </Container>
+    </section>
   );
 }
 
