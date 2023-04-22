@@ -19,6 +19,7 @@ function Register() {
         register(user);
         // ...
         setIsLoading(false);
+        toast.success('Registration completed');
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -30,11 +31,11 @@ function Register() {
 
         // ..
       });
-    toast.promise(registerPromise, {
-      loading: 'Loading',
-      // success: 'Registration completed',
-      // error: 'Error when trying to register',
-    });
+    // toast.promise(registerPromise, {
+    //   loading: 'Loading',
+    //   success: 'Registration completed',
+    //   error: 'Error when trying to register',
+    // });
   }
 
   return (

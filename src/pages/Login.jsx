@@ -6,37 +6,42 @@ import { useAuthCtx } from '../store/AuthProvider';
 import { toast } from 'react-hot-toast';
 
 function Login() {
-  const { login, setIsLoading, isLoading } = useAuthCtx();
+  const { login, setIsLoading } = useAuthCtx();
 
   function loginFire({ email, password }) {
+    const toastId = toast.loading();
+
     setIsLoading(true);
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        // Signed in
         const user = userCredential.user;
-        console.log('user ===', user);
         const token = user.uid;
         login(user, token);
         setIsLoading(false);
+        toast.dismiss(toastId);
+        toast.success('Welcome');
         // ...
       })
       .catch((error) => {
+        toast.dismiss(toastId);
         const errorCode = error.code;
-        toast.error(errorCode);
-        // const errorMessage = error.message;
-        // console.warn('errorMessage ===', errorMessage);
-
+        console.log('errorCode ===', errorCode);
+        const errorMessage = error.message;
+        console.log('errorMessage ===', errorMessage);
+        if (errorCode === 'auth/wrong-password') {
+          toast.error('Wrong email or password');
+        } else if (errorCode === 'auth/user-not-found') {
+          toast.error('User does not exist');
+        } else {
+          toast.error(errorCode);
+        }
         setIsLoading(false);
       });
-    // toast.promise(loginWithEmailPromise, {
-    //   loading: 'Loading',
-    //   success: 'Welcome back',
-    //   error: 'Error when loging in',
-    // });
   }
 
   function loginWithGoogle() {
     setIsLoading(true);
+
     const loginGooglePromise = signInWithPopup(auth, googleProvider)
       .then((result) => {
         // This gives you a Google Access Token. You can use it to access the Google API.
