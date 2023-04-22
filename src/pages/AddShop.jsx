@@ -33,7 +33,7 @@ function AddShop() {
   //   );
   // }
   return (
-    <div className='min-h-[93.4vh] flex items-center justify-center'>
+    <div className='min-h-[100vh] flex items-center justify-center'>
       <div className='bg-primary flex rounded-2xl shadow-lg max-w-5xl p-5'>
         <div className='md:w-1/2 px-8 mb-2'>
           <h2 className='font-bold font-headers text-secondary text-4xl'>Add shop</h2>

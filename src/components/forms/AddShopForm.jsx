@@ -34,7 +34,7 @@ function AddShopForm({ onNewShop }) {
       <form className='flex flex-col  gap-4' onSubmit={formik.handleSubmit}>
         <div className='relative'>
           <input
-            className='p-2rounded-xl border w-full'
+            className='p-2 rounded-xl border w-full'
             type='text'
             id='name'
             placeholder='Shop name'

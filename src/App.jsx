@@ -14,7 +14,7 @@ function App() {
   const { isLoggedIn } = useAuthCtx();
 
   return (
-    <div className='App bg-light'>
+    <div className='App bg-[#6C5A49]'>
       <Header />
       <Toaster
         toastOptions={{

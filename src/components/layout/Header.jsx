@@ -47,7 +47,7 @@ function Header() {
       <Container>
         <div className='mx-auto w-full px-3 md:px-0 flex  justify-between items-center '>
           <Link
-            className='font-headers text-primary text-[20px] md:text-[40px] hover:text-secondary transition-colors duration-700'
+            className='font-headers text-primary text-3xl md:text-[40px] hover:text-secondary transition-colors duration-700'
             to={'/'}
           >
             Logo
@@ -89,7 +89,7 @@ function Header() {
             <button
               onClick={handleMenu}
               type='button'
-              className='inline-flex items-center justify-center p-2 rounded-md text-primary hover:text-secondary focus:ring-2 focus:ring-offset-2 focus:ring-offset-primary focus:ring-white'
+              className='text-2xl inline-flex items-center justify-center p-2 rounded-md text-primary hover:text-secondary focus:ring-2 focus:ring-offset-2 focus:ring-offset-primary focus:ring-white'
             >
               <span className='sr-only'>Open main menu</span>
               {open === true ? <FaTimes /> : <FaBars />}
@@ -99,8 +99,8 @@ function Header() {
       </Container>
       {/* mobile menu */}
       {open ? (
-        <div className='md:hidden'>
-          <div className='ox-2 pt-2 pb-3 space-y-1 sm:px-3 text-center'>
+        <div className='md:hidden '>
+          <div className='ox-2 pt-2 pb-3 space-y-1 sm:px-3 text-center '>
             {!isLoggedIn &&
               linksData.map(({ index, title, link }) => (
                 <NavLink
