@@ -3,6 +3,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { Link } from 'react-router-dom';
 import { useAuthCtx } from '../../store/AuthProvider';
+import InputError from '../ui/InputError';
 
 function LoginForm({ onLogin, onGoogleLogin }) {
   const { isLoading } = useAuthCtx();
@@ -24,9 +25,9 @@ function LoginForm({ onLogin, onGoogleLogin }) {
   return (
     <div>
       <form className='flex flex-col  gap-4' onSubmit={formik.handleSubmit}>
-        <div>
+        <div className='relative'>
           <input
-            className='p-2 mt-8 rounded-xl border w-full'
+            className='p-2 rounded-xl border w-full'
             id='email'
             type='text'
             name='email'
@@ -35,9 +36,9 @@ function LoginForm({ onLogin, onGoogleLogin }) {
             value={formik.values.email}
             placeholder='Email'
           />
-          {formik.touched.email && formik.errors.email ? <div>{formik.errors.email}</div> : null}
+          {formik.touched.email && formik.errors.email ? <InputError>{formik.errors.email}</InputError> : null}
         </div>
-        <div>
+        <div className='relative'>
           <input
             className='p-2 rounded-xl border w-full'
             id='password'
@@ -48,7 +49,7 @@ function LoginForm({ onLogin, onGoogleLogin }) {
             value={formik.values.password}
             placeholder='Password'
           />
-          {formik.touched.password && formik.errors.password ? <div>{formik.errors.password}</div> : null}
+          {formik.touched.password && formik.errors.password ? <InputError>{formik.errors.password}</InputError> : null}
         </div>
         <button
           disabled={isLoading}

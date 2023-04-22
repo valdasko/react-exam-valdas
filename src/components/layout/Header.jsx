@@ -26,7 +26,10 @@ function Header() {
     >
       <Container>
         <div className='mx-auto w-full flex  justify-between items-center '>
-          <Link className='font-headers text-[40px] hover:text-primary transition-colors' to={'/'}>
+          <Link
+            className='font-headers text-primary text-[40px] hover:text-secondary transition-colors duration-700'
+            to={'/'}
+          >
             Logo
           </Link>
           <nav className='my-2 flex gap-6 font-body text-xl'>

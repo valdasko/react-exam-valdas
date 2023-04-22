@@ -4,7 +4,7 @@ import { collection, addDoc } from 'firebase/firestore';
 import { db } from '../firebase/firebase';
 import { toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
-import Container from '../components/ui/Container';
+
 import { useAuthCtx } from '../store/AuthProvider';
 
 function AddShop() {
@@ -35,9 +35,9 @@ function AddShop() {
   return (
     <div className='min-h-[93.4vh] flex items-center justify-center'>
       <div className='bg-primary flex rounded-2xl shadow-lg max-w-5xl p-5'>
-        <div className='md:w-1/2 px-8'>
-          <h2 className='font-bold font-headers text-secondary text-2xl'>Add shop</h2>
-          <p className='font-body text-sm mt-4'>Add your shop to our page easily</p>
+        <div className='md:w-1/2 px-8 mb-2'>
+          <h2 className='font-bold font-headers text-secondary text-4xl'>Add shop</h2>
+          <p className='font-body text-md mt-4 mb-8'>Add your shop to our page easily</p>
           <AddShopForm onNewShop={createShop} />
         </div>
 

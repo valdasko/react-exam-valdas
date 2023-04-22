@@ -3,6 +3,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useAuthCtx } from '../../store/AuthProvider';
 import { Link } from 'react-router-dom';
+import InputError from '../ui/InputError';
 
 function RegisterForm({ onRegister }) {
   const { isLoading } = useAuthCtx();
@@ -35,9 +36,9 @@ function RegisterForm({ onRegister }) {
   return (
     <div>
       <form className='flex flex-col  gap-4' onSubmit={formik.handleSubmit}>
-        <div>
+        <div className='relative'>
           <input
-            className='p-2 mt-8 rounded-xl border w-full'
+            className='p-2 rounded-xl border w-full'
             id='email'
             type='text'
             name='email'
@@ -46,9 +47,9 @@ function RegisterForm({ onRegister }) {
             value={formik.values.email}
             placeholder='Email'
           />
-          {formik.touched.email && formik.errors.email ? <div>{formik.errors.email}</div> : null}
+          {formik.touched.email && formik.errors.email ? <InputError>{formik.errors.email}</InputError> : null}
         </div>
-        <div>
+        <div className='relative'>
           {/* <label htmlFor='password'>Password</label> */}
           <input
             className='p-2 rounded-xl border w-full'
@@ -60,9 +61,9 @@ function RegisterForm({ onRegister }) {
             value={formik.values.password}
             placeholder='Password'
           />
-          {formik.touched.password && formik.errors.password ? <div>{formik.errors.password}</div> : null}
+          {formik.touched.password && formik.errors.password ? <InputError>{formik.errors.password}</InputError> : null}
         </div>
-        <div>
+        <div className='relative'>
           {/* <label htmlFor='password'>Repeat password</label> */}
           <input
             className='p-2 rounded-xl border w-full'
@@ -75,7 +76,7 @@ function RegisterForm({ onRegister }) {
             placeholder='Repeat Password'
           />
           {formik.touched.repeatPassword && formik.errors.repeatPassword ? (
-            <div>{formik.errors.repeatPassword}</div>
+            <InputError>{formik.errors.repeatPassword}</InputError>
           ) : null}
         </div>
         <button

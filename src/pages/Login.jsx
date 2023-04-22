@@ -79,8 +79,8 @@ function Login() {
     <section className='min-h-[93.4vh] flex items-center justify-center'>
       <div className='bg-primary flex rounded-2xl shadow-lg max-w-5xl p-5'>
         <div className='md:w-1/2 px-8'>
-          <h2 className='font-bold font-headers text-secondary text-2xl'>Login</h2>
-          <p className='font-body text-sm mt-4'>If You Are Already A Member, Easily Log In</p>
+          <h2 className='font-bold font-headers text-secondary text-4xl'>Login</h2>
+          <p className='font-body text-md mt-4 mb-8'>Login if You are already a member</p>
           <LoginForm onLogin={loginFire} onGoogleLogin={loginWithGoogle} />
         </div>
 
