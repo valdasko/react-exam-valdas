@@ -12,6 +12,7 @@ import NotFound from './pages/NotFound';
 
 function App() {
   const { isLoggedIn } = useAuthCtx();
+
   return (
     <div className='App bg-light'>
       <Header />

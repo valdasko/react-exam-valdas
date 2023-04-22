@@ -12,6 +12,10 @@ function Header() {
     return clases.filter(Boolean).join(' ');
   }
 
+  function isActive(pathname) {
+    return location.pathname === pathname;
+  }
+
   // className='sticky top-0 z-50  shadow-sm bg-white'
   return (
     <header
@@ -26,29 +30,54 @@ function Header() {
             Logo
           </Link>
           <nav className='my-2 flex gap-6 font-body text-xl'>
-            <NavLink className='hover:text-primary px-2 py-1' to={'/'}>
+            <NavLink
+              className={`hover:text-primary transition-colors duration-300 ${
+                isActive('/') ? 'text-primary' : ''
+              } px-2 py-1`}
+              to={'/'}
+            >
               Home
             </NavLink>
 
             {!isLoggedIn && (
               <>
-                <NavLink className='hover:text-primary transition-colors  px-2 py-1' to={'/login'}>
+                <NavLink
+                  className={`hover:text-primary transition-colors duration-300 ${
+                    isActive('/login') ? 'text-primary' : ''
+                  } px-2 py-1`}
+                  to={'/login'}
+                >
                   Login
                 </NavLink>
-                <NavLink className='hover:text-primary transition-colors px-2 py-1' to={'/register'}>
+                <NavLink
+                  className={`hover:text-primary transition-colors duration-300 ${
+                    isActive('/register') ? 'text-primary' : ''
+                  } px-2 py-1`}
+                  to={'/register'}
+                >
                   Sign up
                 </NavLink>
               </>
             )}
             {isLoggedIn && (
               <>
-                <NavLink className='hover:text-primary transition-colors  px-2 py-1' to={'/shops'}>
+                <NavLink
+                  className={`hover:text-primary transition-colors duration-300 ${
+                    isActive('/shops') ? 'text-primary' : ''
+                  } px-2 py-1`}
+                  to={'/shops'}
+                >
                   Shops
                 </NavLink>
-                <NavLink className='hover:text-primary transition-colors px-2 py-1' to={'/addshop'}>
+                <NavLink
+                  className={`hover:text-primary transition-colors duration-300 ${
+                    isActive('/addshop') ? 'text-primary' : ''
+                  } px-2 py-1`}
+                  to={'/addshop'}
+                >
                   Add shop
                 </NavLink>
-                <button className='hover:text-primary transition-colors px-2 py-1' onClick={logout}>
+                <button className='hover:text-primary transition-colors duration-300 px-2 py-1' onClick={logout}>
                   Logout
                 </button>
               </>
