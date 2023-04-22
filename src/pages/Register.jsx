@@ -7,15 +7,17 @@ import { useAuthCtx } from '../store/AuthProvider';
 import { toast } from 'react-hot-toast';
 
 function Register() {
-  const { register } = useAuthCtx();
+  const { register, setIsLoading } = useAuthCtx();
 
   function registerUser({ email, password }) {
-    createUserWithEmailAndPassword(auth, email, password)
+    setIsLoading(true);
+    const registerPromise = createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
         register(user);
         // ...
+        setIsLoading(false);
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -23,17 +25,31 @@ function Register() {
           toast.error('A user with this email already exists');
         }
         const errorMessage = error.message;
+        setIsLoading(false);
         // ..
       });
+    toast.promise(registerPromise, {
+      loading: 'Loading',
+      success: 'Registration completed',
+      error: 'Error when trying to register',
+    });
   }
 
   return (
-    <div>
-      <h1>Register page</h1>
-      <RegisterForm onRegister={registerUser} />
-      <Link to={'/login'}>Already have an account? Log in</Link>
+    <div className='min-h-[93.4vh] flex items-center justify-center'>
+      <div className='bg-primary flex rounded-2xl shadow-lg max-w-3xl p-5'>
+        <div className='md:w-1/2 px-8'>
+          <h2 className='font-bold font-headers text-secondary text-2xl'>Register</h2>
+
+          <RegisterForm onRegister={registerUser} />
+        </div>
+
+        {/* image */}
+        <div className='w-1/2 md:block hidden '>
+          <img className='rounded-2xl ' src='/public/login.jpg' alt='login image' />
+        </div>
+      </div>
     </div>
   );
 }
-
 export default Register;
