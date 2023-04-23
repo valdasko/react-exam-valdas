@@ -8,7 +8,7 @@ function Card({ item }) {
         <h3 className='text-[28px] mb-4 font-headers leading-relaxed text-secondary'>{item.name}</h3>
         <p className='tracking-wide mb-4'>{item.description}</p>
         <p className='mb-4'>{item.town}</p>
-        <p className>
+        <p>
           Opened in:
           {item.startyear}
         </p>

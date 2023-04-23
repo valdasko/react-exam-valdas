@@ -9,13 +9,13 @@ function Home() {
   const { isLoggedIn } = useAuthCtx();
 
   return (
-    <section className='md:min-h-screen'>
+    <section className='md:min-h-[80vh]'>
       <Container>
         <div className='mx-auto mt-8 '>
           <div className='md:relative mb-6 w-full py-8 md:py-0'>
             <video
               src={escalators}
-              className='w-full h-[30rem] rounded-bl-[12rem] object-cover object-center hidden md:flex'
+              className='w-full h-[30rem] rounded-bl-[12rem] rounded-tr-[5rem] object-cover object-center hidden md:flex'
               autoPlay
               loop
               muted
@@ -26,22 +26,22 @@ function Home() {
               {isLoggedIn && (
                 <span className='block font-body text-xl text-center text-[#333]'>
                   You can{' '}
-                  <Link className='font-bold' to={'/addshop'}>
+                  <Link className='font-bold hover:text-primary transition-colors duration-300' to={'/addshop'}>
                     add shop
                   </Link>{' '}
                   or go to{' '}
-                  <Link className='font-bold' to={'/shops'}>
+                  <Link className='font-bold hover:text-primary transition-colors duration-300' to={'/shops'}>
                     shops page
                   </Link>
                 </span>
               )}
               {!isLoggedIn && (
                 <span className='block font-body text-xl text-center text-[#333]'>
-                  <Link className='font-bold' to={'/login'}>
+                  <Link className='font-bold hover:text-primary transition-colors duration-300' to={'/login'}>
                     login
                   </Link>{' '}
                   or{' '}
-                  <Link className='font-bold' to={'/register'}>
+                  <Link className='font-bold hover:text-primary transition-colors duration-300' to={'/register'}>
                     sign up
                   </Link>{' '}
                   to continue
