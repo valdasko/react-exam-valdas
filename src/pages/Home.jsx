@@ -9,13 +9,13 @@ function Home() {
   const { isLoggedIn } = useAuthCtx();
 
   return (
-    <section className='min-h-screen'>
+    <section className='md:min-h-screen'>
       <Container>
         <div className='mx-auto mt-8 '>
           <div className='md:relative mb-6 w-full py-8 md:py-0'>
             <video
               src={escalators}
-              className='w-full h-[30rem] rounded-xl object-cover object-center hidden md:flex'
+              className='w-full h-[30rem] rounded-bl-[12rem] object-cover object-center hidden md:flex'
               autoPlay
               loop
               muted

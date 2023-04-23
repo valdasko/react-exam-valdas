@@ -9,12 +9,13 @@ import AddShop from './pages/AddShop';
 import { useAuthCtx } from './store/AuthProvider';
 import { Toaster } from 'react-hot-toast';
 import NotFound from './pages/NotFound';
+import Footer from './components/layout/Footer';
 
 function App() {
   const { isLoggedIn } = useAuthCtx();
-
+  //
   return (
-    <div className='App bg-[#6C5A49]'>
+    <div className='App bg-light'>
       <Header />
       <Toaster
         toastOptions={{
@@ -70,6 +71,7 @@ function App() {
         />
         <Route path={'*'} element={<NotFound />} />
       </Routes>
+      <Footer />
     </div>
   );
 }
