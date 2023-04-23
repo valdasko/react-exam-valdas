@@ -1,22 +1,57 @@
 import React from 'react';
 import Container from '../components/ui/Container';
 // import Container from '../components/ui/Container';
+import escalators from '../assets/escalators.mp4';
+import { Link } from 'react-router-dom';
+import { useAuthCtx } from '../store/AuthProvider';
 
 function Home() {
+  const { isLoggedIn } = useAuthCtx();
+
   return (
-    <main>
+    <section className='min-h-screen'>
       <Container>
-        <div className='mx-auto'>
-          <div className='relative mb-6'>
-            <img className='w-full h-80 object-cover bottom-5' src='/public/hero.webp' alt='hero img' />
-            <h1 className='font-headers text-center text-[40px] font-normal  text-secondary bg-light absolute left-1/2 transform -translate-x-1/2  bottom-0 bg-opacity-80 rounded-t-xl  uppercase py-8 px-20'>
-              shops
-              <span className='block font-body text-xl text-center text-[#333]'>Welcome to our shops page</span>
+        <div className='mx-auto mt-8 '>
+          <div className='md:relative mb-6 w-full py-8 md:py-0'>
+            <video
+              src={escalators}
+              className='w-full h-[30rem] rounded-xl object-cover object-center hidden md:flex'
+              autoPlay
+              loop
+              muted
+            />
+            {/* <img className='w-full h-80 object-cover bottom-5' src='/public/hero.webp' alt='hero img' /> */}
+            <h1 className='font-headers text-center text-[40px] font-normal  text-secondary bg-light md:absolute md:left-1/2 md:transform md:-translate-x-1/2  md:bottom-0 bg-opacity-80 rounded-t-xl  uppercase py-8 px-20'>
+              Home
+              {isLoggedIn && (
+                <span className='block font-body text-xl text-center text-[#333]'>
+                  You can{' '}
+                  <Link className='font-bold' to={'/addshop'}>
+                    add shop
+                  </Link>{' '}
+                  or go to{' '}
+                  <Link className='font-bold' to={'/shops'}>
+                    shops page
+                  </Link>
+                </span>
+              )}
+              {!isLoggedIn && (
+                <span className='block font-body text-xl text-center text-[#333]'>
+                  <Link className='font-bold' to={'/login'}>
+                    login
+                  </Link>{' '}
+                  or{' '}
+                  <Link className='font-bold' to={'/register'}>
+                    sign up
+                  </Link>{' '}
+                  to continue
+                </span>
+              )}
             </h1>
           </div>
         </div>
       </Container>
-    </main>
+    </section>
   );
 }
 
