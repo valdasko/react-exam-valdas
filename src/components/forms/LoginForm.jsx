@@ -25,7 +25,7 @@ function LoginForm({ onLogin, onGoogleLogin }) {
   return (
     <div>
       <form className='flex flex-col  gap-4' onSubmit={formik.handleSubmit}>
-        <div className='relative'>
+        <div>
           <input
             className='p-2 rounded-xl border w-full'
             id='email'
@@ -38,7 +38,7 @@ function LoginForm({ onLogin, onGoogleLogin }) {
           />
           {formik.touched.email && formik.errors.email ? <InputError>{formik.errors.email}</InputError> : null}
         </div>
-        <div className='relative'>
+        <div>
           <input
             className='p-2 rounded-xl border w-full'
             id='password'
@@ -65,7 +65,7 @@ function LoginForm({ onLogin, onGoogleLogin }) {
         </div>
         <button
           disabled={isLoading}
-          className='bg-white border py-2 w-full rounded-xl mt-5 mb-5 font-body flex justify-center items-center'
+          className='bg-white py-2 w-full rounded-xl mt-5 mb-5 font-body flex justify-center items-center hover:bg-[#323d34] hover:text-light transition-colors duration-300'
           onClick={onGoogleLogin}
         >
           <svg className='mr-3' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48' width='25px' height='25px'>

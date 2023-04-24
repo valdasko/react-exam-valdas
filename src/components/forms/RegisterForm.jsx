@@ -36,7 +36,7 @@ function RegisterForm({ onRegister }) {
   return (
     <div>
       <form className='flex flex-col  gap-4' onSubmit={formik.handleSubmit}>
-        <div className='relative'>
+        <div>
           <input
             className='p-2 rounded-xl border w-full'
             id='email'
@@ -49,7 +49,7 @@ function RegisterForm({ onRegister }) {
           />
           {formik.touched.email && formik.errors.email ? <InputError>{formik.errors.email}</InputError> : null}
         </div>
-        <div className='relative'>
+        <div>
           <input
             className='p-2 rounded-xl border w-full'
             id='password'
@@ -62,7 +62,7 @@ function RegisterForm({ onRegister }) {
           />
           {formik.touched.password && formik.errors.password ? <InputError>{formik.errors.password}</InputError> : null}
         </div>
-        <div className='relative'>
+        <div>
           <input
             className='p-2 rounded-xl border w-full'
             id='repeatPassword'

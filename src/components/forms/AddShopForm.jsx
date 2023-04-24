@@ -31,7 +31,7 @@ function AddShopForm({ onNewShop }) {
   return (
     <div>
       <form className='flex flex-col  gap-4' onSubmit={formik.handleSubmit}>
-        <div className='relative'>
+        <div>
           <input
             className='p-2 rounded-xl border w-full'
             type='text'
@@ -43,7 +43,7 @@ function AddShopForm({ onNewShop }) {
           />
           {formik.touched.name && formik.errors.name ? <InputError>{formik.errors.name}</InputError> : null}
         </div>
-        <div className='relative'>
+        <div>
           <input
             className='p-2 rounded-xl border w-full'
             type='text'
@@ -55,7 +55,7 @@ function AddShopForm({ onNewShop }) {
           />
           {formik.touched.town && formik.errors.town ? <InputError>{formik.errors.town}</InputError> : null}
         </div>
-        <div className='relative'>
+        <div>
           <input
             className='p-2 rounded-xl border w-full'
             type='text'
@@ -69,7 +69,7 @@ function AddShopForm({ onNewShop }) {
             <InputError>{formik.errors.startyear}</InputError>
           ) : null}
         </div>
-        <div className='relative'>
+        <div>
           <textarea
             className='p-2 rounded-xl border w-full resize-none'
             type='text'
@@ -84,7 +84,7 @@ function AddShopForm({ onNewShop }) {
             <InputError>{formik.errors.description}</InputError>
           ) : null}
         </div>
-        <div className='relative'>
+        <div>
           <input
             className='p-2 rounded-xl border w-full'
             type='text'

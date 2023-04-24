@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 
 function NotFound() {
   return (
-    <div className='min-h-screen '>
-      <div className='max-w-[300px] mx-auto grid content-center '>
+    <div className='min-h-screen'>
+      <div className='max-w-[300px] mt-10 mx-auto grid content-center '>
         <h1 className='mt-20 text-center font-headers text-[50px]'>oops!</h1>
         <p className='mb-2 text-center font-headers text-[30px]'>seems like this page does not exist..</p>
         <Link
