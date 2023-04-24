@@ -24,7 +24,6 @@ function AddShopForm({ onNewShop }) {
       image: Yup.string().min(5).required('Required field'),
     }),
     onSubmit: (values) => {
-      console.log(values);
       onNewShop(values);
     },
   });

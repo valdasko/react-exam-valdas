@@ -8,9 +8,9 @@ function Home() {
   const { isLoggedIn } = useAuthCtx();
 
   return (
-    <section className='min-h-screen md:min-h-[80vh] '>
+    <section className='min-h-[75vh] md:min-h-[80vh] flex items-center '>
       <Container>
-        <div className='mx-auto mt-8 '>
+        <div className='mx-auto '>
           <div className='md:relative mb-6 w-full py-8 md:py-0'>
             <video
               src={escalators}
