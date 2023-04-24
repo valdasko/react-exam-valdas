@@ -49,7 +49,7 @@ function Header() {
             className='font-headers text-primary text-3xl md:text-[40px] hover:text-secondary transition-colors duration-700'
             to={'/'}
           >
-            Logo
+            Logo.
           </Link>
           <nav className='hidden my-2 md:flex gap-6 font-body text-xl'>
             {!isLoggedIn &&

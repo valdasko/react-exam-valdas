@@ -11,7 +11,7 @@ function Footer() {
               className='font-headers text-primary text-3xl md:text-[40px] hover:text-secondary transition-colors duration-700'
               to={'/'}
             >
-              Logo
+              Logo.
             </Link>
           </div>
 
@@ -21,7 +21,7 @@ function Footer() {
                 href='https://www.facebook.com/'
                 rel='noreferrer'
                 target='_blank'
-                className='text-gray-700 transition hover:opacity-75'
+                className='text-secondary transition-colors duration-300 hover:text-primary'
               >
                 <span className='sr-only'>Facebook</span>
 
@@ -39,7 +39,7 @@ function Footer() {
                 href='https://www.instagram.com/'
                 rel='noreferrer'
                 target='_blank'
-                className='text-gray-700 transition hover:opacity-75'
+                className='text-secondary transition-colors duration-300 hover:text-primary'
               >
                 <span className='sr-only'>Instagram</span>
 
@@ -58,7 +58,7 @@ function Footer() {
                 href='https://twitter.com/'
                 rel='noreferrer'
                 target='_blank'
-                className='text-gray-700 transition hover:opacity-75'
+                className='text-secondary transition-colors duration-300 hover:text-primary'
               >
                 <span className='sr-only'>Twitter</span>
 
