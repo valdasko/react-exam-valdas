@@ -1,18 +1,17 @@
 import React from 'react';
 import RegisterForm from '../components/forms/RegisterForm';
-import { Link } from 'react-router-dom';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../firebase/firebase';
 import { useAuthCtx } from '../store/AuthProvider';
 import { toast } from 'react-hot-toast';
 
 function Register() {
-  const { register, setIsLoading, isLoading } = useAuthCtx();
+  const { register, setIsLoading } = useAuthCtx();
 
   function registerUser({ email, password }) {
     setIsLoading(true);
 
-    const registerPromise = createUserWithEmailAndPassword(auth, email, password)
+    createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
@@ -31,11 +30,6 @@ function Register() {
 
         // ..
       });
-    // toast.promise(registerPromise, {
-    //   loading: 'Loading',
-    //   success: 'Registration completed',
-    //   error: 'Error when trying to register',
-    // });
   }
 
   return (
@@ -47,7 +41,6 @@ function Register() {
           <RegisterForm onRegister={registerUser} />
         </div>
 
-        {/* image */}
         <div className='w-1/2 md:block hidden '>
           <img className='rounded-2xl ' src='/public/login.jpg' alt='login image' />
         </div>

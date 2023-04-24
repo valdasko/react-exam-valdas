@@ -13,7 +13,7 @@ import Footer from './components/layout/Footer';
 
 function App() {
   const { isLoggedIn } = useAuthCtx();
-  //
+
   return (
     <div className='App bg-light'>
       <Header />

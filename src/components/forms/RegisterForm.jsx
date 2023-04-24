@@ -50,7 +50,6 @@ function RegisterForm({ onRegister }) {
           {formik.touched.email && formik.errors.email ? <InputError>{formik.errors.email}</InputError> : null}
         </div>
         <div className='relative'>
-          {/* <label htmlFor='password'>Password</label> */}
           <input
             className='p-2 rounded-xl border w-full'
             id='password'
@@ -64,7 +63,6 @@ function RegisterForm({ onRegister }) {
           {formik.touched.password && formik.errors.password ? <InputError>{formik.errors.password}</InputError> : null}
         </div>
         <div className='relative'>
-          {/* <label htmlFor='password'>Repeat password</label> */}
           <input
             className='p-2 rounded-xl border w-full'
             id='repeatPassword'

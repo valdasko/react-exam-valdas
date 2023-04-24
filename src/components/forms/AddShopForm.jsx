@@ -85,7 +85,6 @@ function AddShopForm({ onNewShop }) {
             <InputError>{formik.errors.description}</InputError>
           ) : null}
         </div>
-        {/* {formik.touched.description && formik.errors.description ? <div>{formik.errors.description}</div> : null} */}
         <div className='relative'>
           <input
             className='p-2 rounded-xl border w-full'

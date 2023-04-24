@@ -14,7 +14,6 @@ const AuthContext = createContext({
   isLoggedIn: false,
   isLoading: false,
   logoutNotification() {},
-  regNotification() {},
 });
 
 function AuthProvider({ children }) {
@@ -29,7 +28,6 @@ function AuthProvider({ children }) {
 
   const isLoggedIn = !!user;
 
-  // const regNotification = () => toast.success('Welcome to our page', { duration: 3000 });
   const logoutNotification = () => toast.success('See you next time!', { duration: 2000 });
 
   function login(uObj) {
@@ -44,7 +42,6 @@ function AuthProvider({ children }) {
     navigate('/');
   }
   function register(uObj) {
-    // regNotification();
     setUser(uObj);
     localStorage.setItem(localUserKey, uObj.uid);
     navigate('/shops');

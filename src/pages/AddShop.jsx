@@ -4,12 +4,11 @@ import { collection, addDoc } from 'firebase/firestore';
 import { db } from '../firebase/firebase';
 import { toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
-
 import { useAuthCtx } from '../store/AuthProvider';
 
 function AddShop() {
   const navigate = useNavigate();
-  const { isLoading, setIsLoading } = useAuthCtx();
+  const { setIsLoading } = useAuthCtx();
 
   async function createShop(newShopObj) {
     setIsLoading(true);
@@ -19,19 +18,11 @@ function AddShop() {
       navigate('/shops');
       setIsLoading(false);
     } catch (e) {
-      console.error('Error adding document: ', e);
       toast.error('Error, try again later');
       setIsLoading(false);
     }
   }
 
-  //   return (
-  //     <Container>
-  //       <h1>Add shop page</h1>
-  //       <AddShopForm onNewShop={createShop} />
-  //     </Container>
-  //   );
-  // }
   return (
     <div className='min-h-[100vh] flex items-center justify-center'>
       <div className='bg-primary flex rounded-2xl shadow-lg max-w-5xl p-5'>
@@ -41,7 +32,6 @@ function AddShop() {
           <AddShopForm onNewShop={createShop} />
         </div>
 
-        {/* image */}
         <div className='w-1/2 md:block hidden '>
           <img className='rounded-2xl ' src='/public/addshop.png' alt='login image' />
         </div>

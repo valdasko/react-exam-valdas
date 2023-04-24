@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../firebase/firebase';
-import Loader from '../components/ui/Loader';
 import { useAuthCtx } from '../store/AuthProvider';
 import Container from '../components/ui/Container';
 import Card from '../components/ui/Card';
@@ -26,15 +25,11 @@ function Shops() {
     getShops();
   }, []);
 
-  // loader test
-  // setIsLoading(true);
-
   return (
     <section className='min-h-screen'>
       <Container>
         <div className='mx-auto '>
           <div className='relative mb-6 w-full'>
-            {/* <video src={escalators} w-full object-cover h-full autoPlay loop muted /> */}
             <img
               className='w-full h-80 object-cover bottom-5 rounded-bl-[12rem] '
               src='/public/hero.webp'

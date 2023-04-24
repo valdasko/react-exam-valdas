@@ -36,7 +36,6 @@ function Header() {
     setOpen((prev) => !prev);
   };
 
-  // className='sticky top-0 z-50  shadow-sm bg-white'
   return (
     <header
       className={classNames(
@@ -97,6 +96,7 @@ function Header() {
           </div>
         </div>
       </Container>
+
       {/* mobile menu */}
       {open ? (
         <div className='md:hidden '>
