@@ -23,7 +23,6 @@ function RegisterForm({ onRegister }) {
         .oneOf([Yup.ref('password')], 'Passwords must match'),
     }),
     onSubmit: (values) => {
-      console.log('Form values:', values);
       const { password } = formik.values;
 
       onRegister({
